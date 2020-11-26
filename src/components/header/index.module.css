@@ -1,0 +1,31 @@
+.header{
+    background-color: #F8F8F8;
+    z-index: 10;
+    position: sticky;
+    top:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  box-shadow: var(--shadow);
+}
+
+.logoContainer{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    width: 100px;
+    padding-right: 10em;
+}
+.logo{
+    max-width: 100px;
+}
+
+.navLink {
+    background-color: white;
+    display: flex;
+    padding: 1em 1em 1em 1em;
+    margin: 1em 1em 1em 1em;
+    justify-content: center;
+    box-shadow: var(--shadow);
+}

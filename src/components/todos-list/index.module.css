@@ -1,0 +1,17 @@
+.list{
+    border: 2px solid black;
+    margin: 5em;
+}
+
+.listItem{
+    display: flex;
+    justify-content: space-between;
+    cursor: auto !important;
+}
+
+.listItem h5{
+    border: 2px solid black;
+    padding: 1em;
+    margin-right: 2em;
+    font-size: large;
+}
