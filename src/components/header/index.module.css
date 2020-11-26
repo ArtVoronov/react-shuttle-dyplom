@@ -2,12 +2,15 @@
     background-color: #F8F8F8;
     z-index: 10;
     position: sticky;
-    top:0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   box-shadow: var(--shadow);
+}
+
+.headerIndicator{
+    background-color: #F8F8F8;
 }
 
 .logoContainer{
