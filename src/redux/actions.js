@@ -2,7 +2,7 @@ import { createActions } from "redux-actions";
 
 const identity = (data) => data;
 
-export const { TODO_ADD, TODO_REMOVE } = createActions({
+export const { todoAdd, todoRemove } = createActions({
   TODO_ADD: identity,
   TODO_REMOVE: identity,
 });

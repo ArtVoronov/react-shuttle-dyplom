@@ -1,5 +1,5 @@
 import { handleActions } from "redux-actions";
-import { TODO_ADD, TODO_REMOVE } from "./actions";
+import { todoAdd, todoRemove } from "./actions";
 
 const date = new Date().toISOString();
 
@@ -15,11 +15,11 @@ const initialState = {
 
 const rootReducer = handleActions(
   {
-    [TODO_ADD]: (state, { payload: { todoItem } }) => ({
+    [todoAdd]: (state, { payload: { todoItem } }) => ({
       ...state,
       todos: [...state.todos, todoItem],
     }),
-    [TODO_REMOVE]: (state, { payload: { id } }) =>
+    [todoRemove]: (state, { payload: { id } }) =>
       state.todos.filter((item) => item.id !== id),
   },
   initialState
