@@ -61,7 +61,4 @@ const TodosList = () => {
   );
 };
 
-// const mapStateToProps = (state) => ({ todos: state });
-
-// export default connect(mapStateToProps)(TodosList);
 export default TodosList;

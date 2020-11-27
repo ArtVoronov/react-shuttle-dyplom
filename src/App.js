@@ -1,25 +1,18 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Router } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header";
 import navPages from "./data/pages.json";
 import styles from "./App.module.css";
 import Routes from "./routes";
-import { Box, Container } from "@material-ui/core";
+import Layout from "./layout";
 
 function App() {
   return (
     <BrowserRouter>
       <Header navPages={navPages} />
-      <Container maxWidth="lg">
-        <Box
-          className={styles.container}
-          display="flex"
-          justifyContent="center"
-          flexDirection="column"
-        >
-          <Routes />
-        </Box>
-      </Container>
+      <Layout size="md">
+        <Routes />
+      </Layout>
     </BrowserRouter>
   );
 }

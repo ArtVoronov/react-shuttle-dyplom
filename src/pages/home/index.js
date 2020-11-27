@@ -1,8 +1,6 @@
-import { Paper } from "@material-ui/core";
-
 const HomePage = () => {
   return (
-    <Paper square>
+    <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores magni
       accusantium maxime, nihil architecto commodi non incidunt quia ipsam fuga
       iure odio mollitia blanditiis ratione ipsa. Omnis necessitatibus
@@ -109,7 +107,7 @@ const HomePage = () => {
       quis nihil. Ducimus minima architecto consequatur aperiam quis repudiandae
       quasi. Ducimus placeat, qui mollitia eaque cupiditate quo. Soluta
       distinctio odit nemo excepturi ex, nam tempora!
-    </Paper>
+    </p>
   );
 };
 

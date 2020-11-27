@@ -26,12 +26,13 @@ code {
 }
 
 .router-animation-exit{
-  opacity: 1;
+  opacity: 0;
+  top: 0;
 }
 
 .router-animation-exit-active{
   position: absolute;
   top: 100%;
   opacity: 0;
-  transition: all 300ms ease-in;
+  transition: opacity 300ms ease-in;
 }
