@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 
-const Layout = ({ children, size, direction = "column" }) => {
+const Layout = ({ children, size, direction = "column", innerRef }) => {
   return (
-    <Container maxWidth={size} className={styles.container}>
+    <Container maxWidth={size} className={styles.container} ref={innerRef}>
       <Box
         display="flex"
         justifyContent="center"

@@ -1,5 +1,9 @@
 import TodosList from "../../components/todos-list";
 
-const TodosPage = () => <TodosList />;
+const TodosPage = () => (
+  <>
+    <TodosList />
+  </>
+);
 
 export default TodosPage;
