@@ -3,11 +3,16 @@ import { List, ListItem, TextField } from "@material-ui/core";
 import styles from "./index.module.css";
 import { useState } from "react";
 import { selectTodos } from "../../redux/selectors";
+import SnackbarCustom from "../common/snackbar";
+
+const TextAreaProps = { min: 0, style: { textAlign: "center" } };
 
 const TodosList = () => {
   const todos = useSelector(selectTodos);
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
+  const [message, setMessage] = useState("");
+  const [severity, setSeverity] = useState("success");
 
   const handleChange = (event) => {
     setTitle(event.target.value);
@@ -27,7 +32,8 @@ const TodosList = () => {
         todoItem,
       },
     });
-    console.log(todos);
+    setMessage(`${title} has been added`);
+    setSeverity("success");
     setTitle("");
     //snackbar add
   };
@@ -36,11 +42,12 @@ const TodosList = () => {
     <>
       <form onSubmit={addTodo}>
         <TextField
-          label="123123"
+          label="Type title, please"
           onChange={handleChange}
           value={title}
           fullWidth
-          inputProps={{ min: 0, style: { textAlign: "center" } }}
+          inputProps={TextAreaProps}
+          outlined
         />
       </form>
       <List className={styles.list}>
@@ -55,7 +62,7 @@ const TodosList = () => {
             <p>{date.toString()}</p>
           </ListItem>
         ))}
-        <ListItem>smth</ListItem>
+        <SnackbarCustom message={message} severity={severity} />
       </List>
     </>
   );

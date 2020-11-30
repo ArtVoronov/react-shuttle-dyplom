@@ -15,27 +15,17 @@ const initialState = {
 
 const rootReducer = handleActions(
   {
-    [todoAdd]: (state, { payload: { todoItem } }) => ({
-      ...state,
-      todos: [...state.todos, todoItem],
-    }),
+    [todoAdd]: (state, { payload: { todoItem } }) => {
+      let todo = todoItem.title ? [...state.todos, todoItem] : [...state.todos];
+      return {
+        ...state,
+        todos: todo,
+      };
+    },
     [todoRemove]: (state, { payload: { id } }) =>
       state.todos.filter((item) => item.id !== id),
   },
   initialState
 );
-
-// const rootReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case "TODO_ADD":
-//       const todoItem = action.payload.todoItem;
-//       return [...state, todoItem];
-//     case "TODO_REMOVE":
-//       const id = action.payload.id;
-//       return state.filter((item) => item.id !== id);
-//     default:
-//       return state;
-//   }
-// };
 
 export default rootReducer;
