@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from "./index.module.css";
 import { Tabs, Tab, makeStyles, Box } from "@material-ui/core";
+import logo from "../../assets/image/logo512.png";
 
 const useStyle = makeStyles({
   indicator: {
@@ -8,8 +9,7 @@ const useStyle = makeStyles({
   },
 });
 
-const logoUrl =
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/LAN_Airlines_logo.svg/1200px-LAN_Airlines_logo.svg.png";
+// const logoUrl = "../../assets/image/logo512.png";
 
 const Header = ({ navPages }) => (
   <Tabs
@@ -23,7 +23,7 @@ const Header = ({ navPages }) => (
       justifyContent="center"
       alignItems="center"
     >
-      <img src={logoUrl} className={styles.logo} alt="logo"></img>
+      <img src={logo} className={styles.logo} alt="logo"></img>
     </Box>
     {navPages.map(({ url, title }) => {
       console.log(url, title);

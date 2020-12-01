@@ -21,7 +21,12 @@
     padding-right: 10em;
 }
 .logo{
-    max-width: 100px;
+    max-width: 65px;
+
+    animation-name: rotate-logo;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 .navLink {
@@ -31,4 +36,10 @@
     margin: 1em 1em 1em 1em;
     justify-content: center;
     box-shadow: var(--shadow);
+}
+
+@keyframes rotate-logo {
+    100%{
+        transform: rotate(360deg);
+    }
 }
