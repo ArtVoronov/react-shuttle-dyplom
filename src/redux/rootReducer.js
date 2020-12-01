@@ -1,31 +1,8 @@
-import { handleActions } from "redux-actions";
-import { todoAdd, todoRemove } from "./actions";
+import { combineReducers } from "redux";
+import { alertReducer } from "./alert/reducer";
+import { todoReducer } from "./todos/reducer";
 
-const date = new Date().toISOString();
-
-const initialState = {
-  todos: [
-    {
-      id: "aldksj123",
-      date: date,
-      title: "Initial todo item",
-    },
-  ],
-};
-
-const rootReducer = handleActions(
-  {
-    [todoAdd]: (state, { payload: { todoItem } }) => {
-      let todo = todoItem.title ? [...state.todos, todoItem] : [...state.todos];
-      return {
-        ...state,
-        todos: todo,
-      };
-    },
-    [todoRemove]: (state, { payload: { id } }) =>
-      state.todos.filter((item) => item.id !== id),
-  },
-  initialState
-);
-
-export default rootReducer;
+export const rootReducer = combineReducers({
+  todos: todoReducer,
+  alert: alertReducer,
+});

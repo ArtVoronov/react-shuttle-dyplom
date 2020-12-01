@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { List, ListItem, TextField } from "@material-ui/core";
+import { Button, List, ListItem, TextField } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 import styles from "./index.module.css";
 import { useState } from "react";
-import { selectTodos } from "../../redux/selectors";
-import SnackbarCustom from "../common/snackbar";
+import { selectTodos } from "../../redux/todos/selectors";
+import { CheckBox } from "@material-ui/icons";
 
 const TextAreaProps = { min: 0, style: { textAlign: "center" } };
 
@@ -11,8 +12,8 @@ const TodosList = () => {
   const todos = useSelector(selectTodos);
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
-  const [message, setMessage] = useState("");
-  const [severity, setSeverity] = useState("success");
+
+  console.log(todos);
 
   const handleChange = (event) => {
     setTitle(event.target.value);
@@ -32,22 +33,27 @@ const TodosList = () => {
         todoItem,
       },
     });
-    setMessage(`${title} has been added`);
-    setSeverity("success");
     setTitle("");
     //snackbar add
   };
 
+  const addTodoDone = (event) => {
+    event.preventDefault();
+  };
+
+  const removeTodo = () => {};
+
   return (
     <>
-      <form onSubmit={addTodo}>
+      <form onSubmit={addTodo} className={styles.inputForm}>
         <TextField
           label="Type title, please"
           onChange={handleChange}
           value={title}
           fullWidth
           inputProps={TextAreaProps}
-          outlined
+          variant="outlined"
+          className={styles.textField}
         />
       </form>
       <List className={styles.list}>
@@ -60,9 +66,12 @@ const TodosList = () => {
           >
             <h5>{title}</h5>
             <p>{date.toString()}</p>
+            <Button onClick={removeTodo}>
+              <DeleteIcon />
+            </Button>
+            <CheckBox onChange={addTodoDone} />
           </ListItem>
         ))}
-        <SnackbarCustom message={message} severity={severity} />
       </List>
     </>
   );

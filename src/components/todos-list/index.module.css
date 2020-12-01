@@ -15,3 +15,10 @@
     margin-right: 2em;
     font-size: large;
 }
+.inputForm{
+    padding-bottom: 0.5em;
+}
+
+.textField{
+    border-radius: 0 !important;
+}
