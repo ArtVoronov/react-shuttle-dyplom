@@ -1,34 +1,16 @@
 import { NavLink } from "react-router-dom";
-import styles from "./index.module.css";
-import { Tabs, Tab, makeStyles, Box } from "@material-ui/core";
-import logo from "../../assets/image/logo512.png";
+const { Tabs, Tab, Box } = require("@material-ui/core");
 
-const useStyle = makeStyles({
-  indicator: {
-    top: "0px",
-  },
-});
+const logo = "../../assets/images/logo512.png";
 
-// const logoUrl = "../../assets/image/logo512.png";
+const Header = () => {
+  return (
+    <Tabs>
+      {/* <img src={logo} alt="logo"></img> */}
+      <Tab to="/" label="Home" component={NavLink} value={""} />
+      {/* <Tab to="/todos" label="Todos" component={NavLink} /> */}
+    </Tabs>
+  );
+};
 
-const Header = ({ navPages }) => (
-  <Tabs
-    className={styles.header}
-    centered
-    classes={{ indicator: useStyle.indicator }}
-  >
-    <Box
-      className={styles.logoContainer}
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <img src={logo} className={styles.logo} alt="logo"></img>
-    </Box>
-    {navPages.map(({ url, title }) => {
-      console.log(url, title);
-      return <Tab key={url} label={title} component={NavLink} to={url} />;
-    })}
-  </Tabs>
-);
 export default Header;

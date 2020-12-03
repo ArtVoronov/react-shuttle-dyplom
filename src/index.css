@@ -15,24 +15,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.router-animation-enter{
-  opacity: 0;
-}
-
-.router-animation-enter-active{
-  opacity: 1;
-  transition: opacity 300ms ease-out;
-}
-
-.router-animation-exit{
-  opacity: 0;
-  top: 0;
-}
-
-.router-animation-exit-active{
-  position: absolute;
-  top: 100%;
-  opacity: 0;
-  transition: opacity 300ms ease-in;
-}
