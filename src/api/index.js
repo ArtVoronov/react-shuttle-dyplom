@@ -20,3 +20,7 @@ export const createTodo = async (todoItem) => {
   };
   axios.post(`${url}/todos.json`, newTodoItem);
 };
+
+export const deleteTodo = async (id) => {
+  await axios.delete(`${url}/todos/${id}.json`);
+};

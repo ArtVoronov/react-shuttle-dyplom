@@ -4,15 +4,33 @@ const identity = (data) => data;
 
 export const {
   todoAdd,
+  todoAddRequest,
+  todoAddSuccess,
+  todoAddError,
+
   todoRemove,
-  todoFetchSuccess,
+  todoRemoveRequest,
+  todoRemoveSuccess,
+  todoRemoveError,
+
+  todoFetch,
   todoFetchRequest,
+  todoFetchSuccess,
   todoFetchError,
 } = createActions({
   TODO_ADD: identity,
+  TODO_ADD_REQUEST: identity,
+  TODO_ADD_SUCCESS: identity,
+  TODO_ADD_ERROR: identity,
+
   TODO_REMOVE: identity,
-  TODO_FETCH_SUCCESS: identity,
+  TODO_REMOVE_REQUEST: identity,
+  TODO_REMOVE_SUCCESS: identity,
+  TODO_REMOVE_ERROR: identity,
+
+  TODO_FETCH: identity,
   TODO_FETCH_REQUEST: identity,
+  TODO_FETCH_SUCCESS: identity,
   TODO_FETCH_ERROR: identity,
 });
 

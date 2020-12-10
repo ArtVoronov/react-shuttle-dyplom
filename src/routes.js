@@ -4,7 +4,6 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import HomePage from "./pages/home";
 import TodosPage from "./pages/todos";
 import "./index.css";
-import { Fade } from "@material-ui/core";
 import Layout from "./layout";
 
 const Routes = ({ location }) => {

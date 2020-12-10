@@ -2,17 +2,14 @@ import { handleActions } from "redux-actions";
 import {
   todoAdd,
   todoRemove,
-  todoFetchRequest,
   todoFetchSuccess,
+  todoRemoveSuccess,
   todoFetchError,
+  todoFetchRequest,
 } from "./actions";
 
-const api = "";
-
-// const date = new Date().toISOString();
-
 const initialState = {
-  todos: [{ smth: 1 }],
+  todos: [],
 };
 
 export const todoReducer = handleActions(
@@ -26,12 +23,6 @@ export const todoReducer = handleActions(
     },
     [todoRemove]: (state, { payload: { id } }) =>
       state.todos.filter((item) => item.id !== id),
-    // [todoComplete]: (state, { payload: { id } }) => ({
-    //   ...state,
-    // }),
-    // [todoFetchSuccess]: (state, { payload: { id } }) => ({
-    //   ...state,
-    // }),
     [todoFetchRequest]: (state) => ({
       ...state,
       error: null,
@@ -48,20 +39,11 @@ export const todoReducer = handleActions(
       error: payload,
       todos: [],
     }),
+    [todoRemoveSuccess]: (state, { payload: { todos } }) => ({
+      ...state,
+      loading: false,
+      todos,
+    }),
   },
   initialState
 );
-
-// const fetchData = () => async (dispatch) => {
-//   dispatch({ type: "FECTH_TODO_REQEST" });
-
-//   try {
-//     const response = await api.fetchSomething();
-//     const list = response.data;
-//     dispatch({ type: "FECTH_TODO_SUCCESS", payload: { list } });
-//   } catch (error) {
-//     dispatch({ type: "FECTH_TODO_ERROR", payload: { error } });
-//   }
-// };
-
-//combine reducers

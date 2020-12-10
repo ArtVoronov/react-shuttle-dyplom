@@ -11,8 +11,6 @@ const SnackbarCustom = ({ message, severity }) => {
   }
 
   const handleClose = (event, reason) => {
-    console.log(event);
-    console.log(reason);
     if (reason === "clickaway") return;
 
     setOpenSnackbar(false);
