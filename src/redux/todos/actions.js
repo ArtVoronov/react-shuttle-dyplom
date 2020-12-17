@@ -1,6 +1,5 @@
 import { createActions } from "redux-actions";
-
-const identity = (data) => data;
+import { identity } from "../utils";
 
 export const {
   todoAdd,

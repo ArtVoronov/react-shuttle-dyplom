@@ -1,5 +1,4 @@
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
 const url = process.env.REACT_APP_API_URL;
 
 export const getTodos = async () => {
@@ -15,12 +14,33 @@ export const getTodos = async () => {
 export const createTodo = async (todoItem) => {
   const newTodoItem = {
     ...todoItem,
-    date: new Date().toJSON(),
-    id: uuidv4(),
+    date: todoItem.date ? todoItem.date : new Date().toJSON(),
   };
-  axios.post(`${url}/todos.json`, newTodoItem);
+  const response = await axios.post(`${url}/todos.json`, newTodoItem);
+  return response.data.name;
+};
+
+export const getNotes = async (id) => {
+  const response = await axios.get(`${url}/notes.json`);
+  // let itemNotes = [];
+  // if (response.data) {
+  //   itemNotes = Object.keys(response.data).map((key) => ({
+  //     ...response.data[key],
+  //     id: key,
+  //   }));
+  // }
+  const itemNotes = response.data
+    ? Object.keys(response.data).map((key) => ({
+        ...response.data[key],
+        id: key,
+      }))
+    : [];
+  const itemFiltered = itemNotes.filter((item) => item.todoItemId === id);
+  return itemFiltered;
 };
 
 export const deleteTodo = async (id) => {
+  console.log(`deleteTodo`);
+  console.log(id);
   await axios.delete(`${url}/todos/${id}.json`);
 };

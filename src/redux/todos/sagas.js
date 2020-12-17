@@ -6,12 +6,16 @@ import {
   todoRemoveSuccess,
   todoFetchRequest,
   todoFetchError,
+  todoAddRequest,
+  todoAddSuccess,
+  todoAddError,
+  todoAdd,
 } from "./actions";
-import { deleteTodo, getTodos } from "../../api";
+import { createTodo, deleteTodo, getTodos } from "../../api";
 
 // fetchTodosHandler||fetchTodosWorker
 function* fetchTodosHandler() {
-  yield put(todoFetch());
+  yield put(todoFetchRequest());
 
   try {
     const todos = yield call(getTodos);
@@ -22,8 +26,8 @@ function* fetchTodosHandler() {
 }
 
 function* deleteTodosHandler({ payload: { id } }) {
+  console.log(id);
   yield put(todoFetchRequest());
-
   try {
     yield call(deleteTodo(id));
     yield put(todoRemoveSuccess({ id }));
@@ -32,7 +36,19 @@ function* deleteTodosHandler({ payload: { id } }) {
   }
 }
 
+function* addTodosHandler({ payload: { todoItem } }) {
+  yield put(todoAddRequest());
+
+  try {
+    const id = yield call(createTodo, todoItem);
+    yield put(todoAddSuccess({ todoItem: { ...todoItem, id } }));
+  } catch (error) {
+    yield put(todoAddError(error));
+  }
+}
+
 export function* todosSaga() {
   yield takeLatest(todoFetch, fetchTodosHandler);
   yield takeEvery(todoRemove, deleteTodosHandler);
+  yield takeLatest(todoAdd, addTodosHandler);
 }

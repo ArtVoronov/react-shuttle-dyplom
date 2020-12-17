@@ -1,27 +1,29 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./index.module.css";
 import { Tabs, Tab, Box } from "@material-ui/core";
 import logo from "../../assets/image/logo512.png";
+import useTabValue from "../../hooks/useTabsValue";
 
 // const logoUrl = "../../assets/image/logo512.png";
 
 const Header = ({ navPages }) => {
-  const location = useLocation();
+  const tabValue = useTabValue();
+
   return (
     <Tabs
       className={styles.header}
       centered
-      value={location.pathname}
+      value={tabValue}
       indicatorColor="primary"
     >
-      <Box
+      {/* <Box
         className={styles.logoContainer}
         display="flex"
         justifyContent="center"
         alignItems="center"
       >
         <img src={logo} className={styles.logo} alt="logo"></img>
-      </Box>
+      </Box> */}
       {navPages.map(({ url, title }) => {
         return (
           <Tab
