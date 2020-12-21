@@ -1,17 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import {
-  Button,
   Card,
   CardActionArea,
   CardContent,
   Grid,
   Typography,
 } from "@material-ui/core";
-import { memo, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { selectTodos, todoFetch } from "../../redux/todos";
 import moment from "moment";
 import { Link, useLocation } from "react-router-dom";
-import DeleteTodoModal from "./delete-todo-modal";
 
 const TodosList = () => {
   const location = useLocation();
@@ -35,7 +33,7 @@ const TodosList = () => {
               component={Link}
               to={{
                 pathname: `/todos/${id}`,
-                state: { background: location, id: id },
+                state: { background: location, id: id, title: title },
               }}
             >
               <CardContent>

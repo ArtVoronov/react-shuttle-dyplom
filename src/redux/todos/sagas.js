@@ -10,8 +10,12 @@ import {
   todoAddSuccess,
   todoAddError,
   todoAdd,
+  todoEditRequest,
+  todoEditError,
+  todoEdit,
+  todoEditSuccess,
 } from "./actions";
-import { createTodo, deleteTodo, getTodos } from "../../api";
+import { createTodo, deleteTodo, editTodo, getTodos } from "../../api";
 
 // fetchTodosHandler||fetchTodosWorker
 function* fetchTodosHandler() {
@@ -47,8 +51,20 @@ function* addTodosHandler({ payload: { todoItem } }) {
   }
 }
 
+function* editTodosHandler({ payload: { todoItem } }) {
+  yield put(todoEditRequest());
+
+  try {
+    yield call(editTodo(todoItem));
+    yield put(todoEditSuccess({ todoItem }));
+  } catch (error) {
+    yield put(todoEditError(error));
+  }
+}
+
 export function* todosSaga() {
   yield takeLatest(todoFetch, fetchTodosHandler);
   yield takeEvery(todoRemove, deleteTodosHandler);
   yield takeLatest(todoAdd, addTodosHandler);
+  yield takeLatest(todoEdit, editTodosHandler);
 }

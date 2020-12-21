@@ -22,13 +22,6 @@ export const createTodo = async (todoItem) => {
 
 export const getNotes = async (id) => {
   const response = await axios.get(`${url}/notes.json`);
-  // let itemNotes = [];
-  // if (response.data) {
-  //   itemNotes = Object.keys(response.data).map((key) => ({
-  //     ...response.data[key],
-  //     id: key,
-  //   }));
-  // }
   const itemNotes = response.data
     ? Object.keys(response.data).map((key) => ({
         ...response.data[key],
@@ -39,8 +32,10 @@ export const getNotes = async (id) => {
   return itemFiltered;
 };
 
+export const editTodo = async (todoItem) => {
+  await axios.patch(`${url}/todos/${todoItem.id}.json`, { ...todoItem });
+};
+
 export const deleteTodo = async (id) => {
-  console.log(`deleteTodo`);
-  console.log(id);
   await axios.delete(`${url}/todos/${id}.json`);
 };

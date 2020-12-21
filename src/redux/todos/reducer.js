@@ -3,6 +3,9 @@ import {
   todoAddError,
   todoAddRequest,
   todoAddSuccess,
+  todoEditError,
+  todoEditRequest,
+  todoEditSuccess,
   todoFetchError,
   todoFetchRequest,
   todoFetchSuccess,
@@ -30,6 +33,24 @@ export const todoReducer = handleActions(
       todos,
     }),
     [todoFetchError]: (state, { payload }) => ({
+      ...state,
+      loading: false,
+      error: payload,
+      todos: state.todos,
+    }),
+
+    [todoEditRequest]: (state) => ({
+      ...state,
+      loading: true,
+      error: null,
+    }),
+    [todoEditSuccess]: (state, { payload: todos }) => ({
+      ...state,
+      loading: false,
+      error: null,
+      todos,
+    }),
+    [todoEditError]: (state, { payload }) => ({
       ...state,
       loading: false,
       error: payload,

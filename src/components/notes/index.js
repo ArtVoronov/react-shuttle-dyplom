@@ -1,11 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Card, List, ListItem } from "@material-ui/core";
+import { Button, Card, CardHeader, List, makeStyles } from "@material-ui/core";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { notesFetch, selectNotes } from "../../redux/notes";
 import DeleteTodoModal from "../todos-list/delete-todo-modal";
+import NoteItem from "./note-item";
+import EditTodoModal from "../todos-list/edit-todo-modal";
 
-const Notes = () => {
+const useStyles = makeStyles({
+  root: {
+    width: 345,
+  },
+});
+
+const Notes = ({ title }) => {
   const dispatch = useDispatch();
   const { notes } = useSelector(selectNotes);
   const { id } = useParams();
@@ -14,23 +22,42 @@ const Notes = () => {
     dispatch(notesFetch({ id }));
   }, [dispatch, id]);
 
-  const [deleteModalOpen, setOpen] = useState(false);
+  const [deleteModalOpen, setDeleteOpen] = useState(false);
+  const [editModalOpen, setEditOpen] = useState(false);
 
   const handleDeleteModalOpen = () => {
-    setOpen(!deleteModalOpen);
+    setDeleteOpen(!deleteModalOpen);
+  };
+
+  const handleEditModalOpen = () => {
+    setEditOpen(!editModalOpen);
   };
 
   return (
-    <Card>
-      <Button onClick={handleDeleteModalOpen}>Delete</Button>
+    <Card variant="outlined">
+      <CardHeader
+        title={title}
+        action={
+          <>
+            <Button onClick={handleDeleteModalOpen}>Delete</Button>
+            <Button onClick={handleEditModalOpen}>Edit</Button>
+          </>
+        }
+      />
+
       <DeleteTodoModal
         id={id}
         open={deleteModalOpen}
         onClose={handleDeleteModalOpen}
       />
-      <List subheader="Note">
+      <EditTodoModal
+        open={editModalOpen}
+        onClose={handleEditModalOpen}
+        title={title}
+      />
+      <List>
         {notes.map((note) => (
-          <ListItem key={note.id}>{note.title}</ListItem>
+          <NoteItem key={note.id} {...note} />
         ))}
       </List>
     </Card>

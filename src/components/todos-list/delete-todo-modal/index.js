@@ -13,11 +13,9 @@ import { todoRemove } from "../../../redux/todos";
 const DeleteTodoModal = ({ open, onClose, title, id }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-
   const handleDelete = () => {
     dispatch(todoRemove({ id }));
     history.push("/todos");
-    history.goBack("/todos");
   };
 
   return (

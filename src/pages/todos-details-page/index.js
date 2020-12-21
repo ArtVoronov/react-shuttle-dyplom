@@ -1,18 +1,20 @@
 import { Dialog, DialogContent } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Notes from "../../components/notes";
 
 const TodosDetailsPage = () => {
   const history = useHistory();
-
+  const location = useLocation();
+  const title = location.state.title;
+  console.log(title);
   const handleClose = () => {
     history.goBack();
   };
 
   return (
-    <Dialog open={true} onClose={handleClose}>
+    <Dialog open={true} onClose={handleClose} fullWidth maxWidth="sm">
       <DialogContent>
-        <Notes />
+        <Notes title={title} />
       </DialogContent>
     </Dialog>
   );
