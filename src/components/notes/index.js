@@ -2,16 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Card, CardHeader, List, makeStyles } from "@material-ui/core";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { notesFetch, selectNotes } from "../../redux/notes";
+import { notesFetch, selectLoadingNotes, selectNotes } from "../../redux/notes";
 import DeleteTodoModal from "../todos-list/delete-todo-modal";
 import NoteItem from "./note-item";
 import EditTodoModal from "../todos-list/edit-todo-modal";
-
-const useStyles = makeStyles({
-  root: {
-    width: 345,
-  },
-});
 
 const Notes = ({ title }) => {
   const dispatch = useDispatch();

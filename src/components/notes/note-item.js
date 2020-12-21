@@ -9,18 +9,21 @@ import moment from "moment";
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 350,
-    minWidth: 350,
+    "&$complited": {
+      backgroundColor: "#FF6347",
+    },
+    "&$uncomplited": {
+      backgroundColor: "#649568",
+    },
+    maxWidth: "100%",
+    minWidth: "100%",
+    width: "100%",
   },
   cardItem: {
-    minWidth: 350,
+    width: "100%",
   },
-  uncomplited: {
-    backgroundColor: "#FF6347",
-  },
-  complited: {
-    backgroundColor: "#649568",
-  },
+  uncomplited: {},
+  complited: {},
 });
 
 const NoteItem = ({ id, title, date, isCompleted }) => {
@@ -32,9 +35,8 @@ const NoteItem = ({ id, title, date, isCompleted }) => {
   return (
     <ListItem>
       <Card
-        className={
-          (styles.card, isCompleted ? styles.complited : styles.uncomplited)
-        }
+        className={isCompleted ? styles.complited : styles.uncomplited}
+        classes={{ root: styles.card }}
         onClick={handleComplite}
       >
         <CardContent className={styles.cardItem}>
