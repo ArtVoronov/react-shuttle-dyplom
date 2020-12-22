@@ -30,7 +30,6 @@ function* fetchTodosHandler() {
 }
 
 function* deleteTodosHandler({ payload: { id } }) {
-  console.log(id);
   yield put(todoFetchRequest());
   try {
     yield call(deleteTodo(id));

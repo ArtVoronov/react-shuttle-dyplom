@@ -12,6 +12,11 @@ export const {
   notesAddSuccess,
   notesAddError,
 
+  notesEdit,
+  notesEditRequest,
+  notesEditSuccess,
+  notesEditError,
+
   notesRemove,
   notesRemoveRequest,
   notesRemoveSuccess,
@@ -31,6 +36,11 @@ export const {
   NOTES_ADD_REQUEST: identity,
   NOTES_ADD_SUCCESS: identity,
   NOTES_ADD_ERROR: identity,
+
+  NOTES_EDIT: identity,
+  NOTES_EDIT_REQUEST: identity,
+  NOTES_EDIT_SUCCESS: identity,
+  NOTES_EDIT_ERROR: identity,
 
   NOTES_REMOVE: identity,
   NOTES_REMOVE_REQUEST: identity,

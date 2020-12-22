@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { selectTodos, todoFetch } from "../../redux/todos";
 import moment from "moment";
 import { Link, useLocation } from "react-router-dom";
+import { Skeleton } from "@material-ui/lab";
 
 const TodosList = () => {
   const location = useLocation();
@@ -20,9 +21,19 @@ const TodosList = () => {
     dispatch(todoFetch());
   }, [dispatch]);
 
-  if (loading) {
-    return <div>loading</div>;
-  }
+  const skeletons = [...Array(6).keys()];
+
+  if (loading)
+    return (
+      <Grid container spacing={3}>
+        {skeletons.map((_, id) => (
+          <Grid item key={id} xs={12} sm={6} md={4}>
+            <Skeleton variant="text" />
+            <Skeleton variant="text" />
+          </Grid>
+        ))}
+      </Grid>
+    );
 
   return (
     <Grid container spacing={3}>

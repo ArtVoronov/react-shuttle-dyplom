@@ -6,7 +6,6 @@ const TodosDetailsPage = () => {
   const history = useHistory();
   const location = useLocation();
   const title = location.state.title;
-  console.log(title);
   const handleClose = () => {
     history.goBack();
   };
