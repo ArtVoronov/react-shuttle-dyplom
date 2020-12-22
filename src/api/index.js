@@ -39,3 +39,11 @@ export const editTodo = async (todoItem) => {
 export const deleteTodo = async (id) => {
   await axios.delete(`${url}/todos/${id}.json`);
 };
+
+export const compliteNote = async (id) => {
+  await axios.patch(`${url}/todos/${id}.json`, { isComplited: true });
+};
+
+export const uncompliteNote = async (id) => {
+  await axios.patch(`${url}/todos/${id}.json`, { isComplited: false });
+};

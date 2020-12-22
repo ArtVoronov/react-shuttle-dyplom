@@ -26,6 +26,11 @@ export const {
   notesCompliteRequest,
   notesCompliteSuccess,
   notesCompliteError,
+
+  notesUncomplite,
+  notesUncompliteRequest,
+  notesUncompliteSuccess,
+  notesUncompliteError,
 } = createActions({
   NOTES_FETCH: identity,
   NOTES_FETCH_REQUEST: identity,
@@ -51,4 +56,9 @@ export const {
   NOTES_COMPLITE_REQUEST: identity,
   NOTES_COMPLITE_SUCCESS: identity,
   NOTES_COMPLITE_ERROR: identity,
+
+  NOTES_UNCOMPLITE: identity,
+  NOTES_UNCOMPLITE_REQUEST: identity,
+  NOTES_UNCOMPLITE_SUCCESS: identity,
+  NOTES_UNCOMPLITE_ERROR: identity,
 });

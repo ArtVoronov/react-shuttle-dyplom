@@ -6,14 +6,18 @@ import {
   Typography,
 } from "@material-ui/core";
 import moment from "moment";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { uncompliteNote } from "../../api";
+import { notesComplite, notesUncomplite } from "../../redux/notes";
 
 const useStyles = makeStyles({
   card: {
     "&$complited": {
-      backgroundColor: "#FF6347",
+      backgroundColor: "#649568",
     },
     "&$uncomplited": {
-      backgroundColor: "#649568",
+      backgroundColor: "#FF6347",
     },
     maxWidth: "100%",
     minWidth: "100%",
@@ -27,17 +31,28 @@ const useStyles = makeStyles({
 });
 
 const NoteItem = ({ id, title, date, isCompleted }) => {
-  const handleComplite = (event) => {
-    console.log(event);
+  const [complited, setCompleted] = useState(isCompleted);
+  const dispatch = useDispatch();
+  const styles = useStyles();
+
+  // useEffect(() => {
+  //   isCompleted ? dispatch(notesComplite(id)) : dispatch(notesUncomplite(id));
+  // }, [dispatch, isCompleted, id]);
+
+  const handleComplite = (id, isComplited) => {
+    isComplited
+      ? dispatch(notesComplite({ id }))
+      : dispatch(uncompliteNote({ id }));
+
+    setCompleted(!isComplited);
   };
 
-  const styles = useStyles();
   return (
     <ListItem>
       <Card
-        className={isCompleted ? styles.complited : styles.uncomplited}
+        className={complited ? styles.complited : styles.uncomplited}
         classes={{ root: styles.card }}
-        onClick={handleComplite}
+        onClick={() => handleComplite(id, complited)}
       >
         <CardContent className={styles.cardItem}>
           <Typography gutterBottom variant="h5" component="h2">

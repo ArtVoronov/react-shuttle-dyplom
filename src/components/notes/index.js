@@ -71,8 +71,8 @@ const Notes = ({ title }) => {
           }
         />
         <List>
-          {skeletons.map((note) => (
-            <ListItem>
+          {skeletons.map((i) => (
+            <ListItem key={i}>
               <Card classes={{ root: styles.card }}>
                 <CardContent className={styles.cardItem}>
                   <Skeleton variant="text" />
@@ -85,6 +85,8 @@ const Notes = ({ title }) => {
       </Card>
     );
   }
+
+  console.log(notes);
 
   return (
     <Card variant="outlined">
